@@ -23,13 +23,13 @@ x-envlibrenms: &envlibrenms
 
 services:
   db:
-    image: mariadb:10.4
+    image: mariadb:10.5
     command:
       - "mysqld"
       - "--innodb-file-per-table=1"
       - "--lower-case-table-names=0"
-      - "--character-set-server=utf8"
-      - "--collation-server=utf8_unicode_ci"
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
     volumes:
       - "db:/var/lib/mysql"
     environment:
@@ -75,6 +75,9 @@ services:
       DB_USER: *MYSQL_USER
       DB_PASSWORD: *MYSQL_PASSWORD
       DB_TIMEOUT: "60"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+      REDIS_DB: "0"
     restart: always
 
   dispatcher:
@@ -153,6 +156,9 @@ services:
       DB_USER: *MYSQL_USER
       DB_PASSWORD: *MYSQL_PASSWORD
       DB_TIMEOUT: "60"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+      REDIS_DB: "0"
       SIDECAR_SYSLOGNG: "1"
     restart: always
 

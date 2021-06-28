@@ -1,5 +1,41 @@
 # Changelog
 
+## 21.6.0-r0 (2021/06/28)
+
+* LibreNMS 21.6.0 (#210)
+
+## 21.5.1-r0 (2021/05/20)
+
+* LibreNMS 21.5.1 (#205)
+* Move to `docker/metadata-action` (#199)
+* Add `file` package (#195)
+
+## 21.4.0-r0 (2021/04/18)
+
+* LibreNMS 21.4.0 (#192)
+* Update db service example (#193)
+* Fix weathermap output perms (#191)
+* Fix warnings (#190)
+* All containers should connect to redis (#178)
+* alpine-s6 3.13-2.2.0.3 (#189)
+
+## 21.3.0-r0 (2021/03/21)
+
+* LibreNMS 21.3.0
+* Update syslog-ng max-connections (#179)
+
+## 21.2.0-r3 (2021/03/18)
+
+* Upstream Alpine update
+
+## 21.2.0-r2 (2021/03/10)
+
+* Handle LibreNMS plugins (#171)
+
+## 21.2.0-r1 (2021/03/04)
+
+* Switch to `yasu`
+
 ## 21.2.0-r0 (2021/02/16)
 
 * LibreNMS 21.2.0 (#167)
