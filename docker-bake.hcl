@@ -2,9 +2,16 @@ variable "DEFAULT_TAG" {
   default = "librenms:local"
 }
 
-// Special target: https://github.com/crazy-max/ghaction-docker-meta#bake-definition
-target "ghaction-docker-meta" {
+variable "LIBRENMS_VERSION" {
+  default = null
+}
+
+// Special target: https://github.com/docker/metadata-action#bake-definition
+target "docker-metadata-action" {
   tags = ["${DEFAULT_TAG}"]
+  args = {
+    LIBRENMS_VERSION = LIBRENMS_VERSION
+  }
 }
 
 // Default target if none specified
@@ -13,7 +20,7 @@ group "default" {
 }
 
 target "image" {
-  inherits = ["ghaction-docker-meta"]
+  inherits = ["docker-metadata-action"]
 }
 
 target "image-local" {
@@ -25,11 +32,8 @@ target "image-all" {
   inherits = ["image"]
   platforms = [
     "linux/amd64",
-    "linux/arm/v6",
     "linux/arm/v7",
     "linux/arm64",
-    "linux/386",
-    "linux/ppc64le",
     "linux/s390x"
   ]
 }

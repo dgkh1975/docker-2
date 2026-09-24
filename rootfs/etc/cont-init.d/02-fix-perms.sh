@@ -1,19 +1,22 @@
 #!/usr/bin/with-contenv sh
+# shellcheck shell=sh
+set -e
 
 echo "Fixing perms..."
 mkdir -p /data \
   /var/run/nginx \
   /var/run/php-fpm
-chown librenms. \
+chown librenms:librenms \
   /data \
   "${LIBRENMS_PATH}" \
   "${LIBRENMS_PATH}/.env" \
-  "${LIBRENMS_PATH}/html/plugins/Weathermap/output"
-chown -R librenms. \
+  "${LIBRENMS_PATH}/cache" \
+  "${LIBRENMS_PATH}/rrd"
+chown -R librenms:librenms \
   /home/librenms \
   /tpls \
   /var/lib/nginx \
   /var/log/nginx \
-  /var/log/php7 \
+  /var/log/php84 \
   /var/run/nginx \
   /var/run/php-fpm
